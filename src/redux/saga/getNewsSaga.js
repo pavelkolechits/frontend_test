@@ -10,7 +10,6 @@ function* getNewsWorker() {
     );
       
     const request = yield result.json();
-       yield console.log(request)
     yield put({ type: ACTIONS.GET_NEWS_REQUEST_SUCCESS, request });
   } catch (e) {
     console.log("err")

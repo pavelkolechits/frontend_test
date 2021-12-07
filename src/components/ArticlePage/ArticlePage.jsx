@@ -1,18 +1,28 @@
 import "./articlepage.scss";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loremText } from "./loremText";
 
 export const ArticlePage = () => {
   const params = useParams();
-  const article = useSelector(i => i.postListReducer.articles.filter((i) => i.id === Number(params.id))[0])
-  const navigate = useNavigate();
-  // const article = useSelector(
-  //   (i) =>
-  //     i.postListReducer.articles.filter((i) => i.id === params.id)[0]
-  // );
 
-  const { title,  imageUrl, summary,  } = article;
+  let article = useSelector((i) =>
+    i.postListReducer.articles.length === 0
+      ? JSON.parse(localStorage.getItem("article"))
+      : i.postListReducer.articles.filter((i) => i.id === Number(params.id))[0]
+  );
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("article", JSON.stringify(article));
+  }, [article]);
+
+
+
+  const { title, imageUrl, summary } = article;
   return (
     <>
       <div className="article_wrap">
@@ -22,7 +32,7 @@ export const ArticlePage = () => {
         <div className="article">
           <h2 className="title">{title || ""}</h2>
           <span className="description">{summary || ""}</span>
-          {/* <span className="content">{content || ""}</span> */}
+          <span className="content">{loremText}</span>
         </div>
       </div>
       <ButtonOfMoving

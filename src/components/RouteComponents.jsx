@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ACTIONS } from "../redux/constants";
 import { useEffect } from "react";
@@ -13,8 +13,8 @@ export const RouteComponents = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route index element={<HomePage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="/" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
