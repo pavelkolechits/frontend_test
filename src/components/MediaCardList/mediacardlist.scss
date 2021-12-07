@@ -1,0 +1,29 @@
+.wrap_media_card {
+    position: fixed;
+    width: 94vw;
+    top: 110px;
+    left: 3vw;
+    right: 3vw;
+    height: calc(100vh - 125px);
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: #00000000;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 2px;
+    }
+
+}
+
+.higtlight {
+    background-color: yellow;
+}
