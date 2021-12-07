@@ -5,14 +5,16 @@ function* getNewsWorker() {
   try {
     const result = yield call(() =>
       fetch(
-        "https://newsapi.org/v2/everything?q=apple&from=2021-12-02&to=2020-10-02&sortBy=popularity&pageSize=10&apiKey=382208ff57424279b7521afe6b127036"
+        'https://api.spaceflightnewsapi.net/v3/articles?_limit=100'
       )
     );
-
+      
     const request = yield result.json();
-
+       yield console.log(request)
     yield put({ type: ACTIONS.GET_NEWS_REQUEST_SUCCESS, request });
-  } catch (e) {}
+  } catch (e) {
+    console.log("err")
+  }
 }
 
 export function* getNewsWatcher() {

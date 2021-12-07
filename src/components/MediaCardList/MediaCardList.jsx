@@ -26,19 +26,19 @@ export const MediaCardList = ({ ...props }) => {
             .filter(
               (i) =>
                 i.title.toLowerCase().includes(props.value) ||
-                i.content.toLowerCase().includes(props.value)
+                i.summary.toLowerCase().includes(props.value)
             )
             .map((i) => (
               <MediaCard
-                key={i.source.id}
-                id={i.source.id}
-                img={i.urlToImage}
+                key={i.id}
+                id={i.id}
+                img={i.imageUrl}
                 title={
                   <span dangerouslySetInnerHTML={createMarkup(i.title)}></span>
                 }
                 content={
                   <span
-                    dangerouslySetInnerHTML={createMarkup(i.content)}
+                    dangerouslySetInnerHTML={createMarkup(i.summary)}
                   ></span>
                 }
                 date={i.publishedAt}

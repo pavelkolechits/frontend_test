@@ -1,16 +1,9 @@
 import { Form } from "./Form/Form";
 import { MediaCardList } from "./MediaCardList/MediaCardList";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { ACTIONS } from "../redux/constants";
+import { useState } from "react";
 
 export const HomePage = () => {
   const [countResult, setCountResult] = useState(0);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({ type: ACTIONS.GET_NEWS_REQUEST });
-  }, []);
 
   const [value, setValue] = useState("");
 
